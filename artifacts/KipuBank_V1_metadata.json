@@ -1,0 +1,283 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "m_bankCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "m_maxRetiro",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "KipuBank_V1_FalloBankCap",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "error",
+						"type": "bytes"
+					}
+				],
+				"name": "KipuBank_V1_FalloETH",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "m_valor",
+						"type": "uint256"
+					}
+				],
+				"name": "KipuBank_V1_FalloMaxRetiro",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "saldo",
+						"type": "uint256"
+					}
+				],
+				"name": "KipuBank_V1_FalloSaldoNoDisponible",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "cuenta",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "valor",
+						"type": "uint256"
+					}
+				],
+				"name": "DepositoExitoso",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "cuenta",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "valor",
+						"type": "uint256"
+					}
+				],
+				"name": "RetiroExitoso",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "depositar",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "obtenerSaldo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "m_valor",
+						"type": "uint256"
+					}
+				],
+				"name": "retirar",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "s_banco",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "valor",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "s_depositos",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "valor",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "usuario",
+						"type": "address"
+					}
+				],
+				"name": "s_retiros",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "valor",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"depositar()": {
+					"details": "esta función debe sumar el valor donado por cada dirección a lo largo del tiempoesta función debe emitir un evento informando la donación."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"KipuBank_V1_FalloBankCap()": [
+					{
+						"notice": "error emitido cuando se supera el bankCap de depositos establecido"
+					}
+				],
+				"KipuBank_V1_FalloETH(bytes)": [
+					{
+						"notice": "error emitido cuando falla el mandado de ETH"
+					}
+				],
+				"KipuBank_V1_FalloMaxRetiro(uint256)": [
+					{
+						"notice": "error emitidcuando retiro supera el maximo umbral de maximo retiro establecido"
+					}
+				],
+				"KipuBank_V1_FalloSaldoNoDisponible(uint256)": [
+					{
+						"notice": "error emitido cuando no alcanzan fondos"
+					}
+				]
+			},
+			"events": {
+				"DepositoExitoso(address,uint256)": {
+					"notice": "evento emitido cuando se realiza un deposito exitoso"
+				},
+				"RetiroExitoso(address,uint256)": {
+					"notice": "evento emitido cuando se realiza una retirada exitosa"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"depositar()": {
+					"notice": "función para recibir donaciones"
+				},
+				"s_banco(address)": {
+					"notice": "mapping para almacenar el valor en la boveda de cada usuario"
+				},
+				"s_depositos(address)": {
+					"notice": "mapping para almacenar cantidad de depositos de cada ususario"
+				},
+				"s_retiros(address)": {
+					"notice": "mapping para almacenar cantidad de retiros de cada usuario"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/KipuBank_V1.sol": "KipuBank_V1"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/KipuBank_V1.sol": {
+			"keccak256": "0xa4b5211931a3eb15a7f0cd8fb61a62bdc78d1589ae68f0a3908516c191c88719",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3007b412d9ed36d5efe22dad99412f98c9b99074278d22aa1b336c2693b9fbae",
+				"dweb:/ipfs/QmZyNy3NqeuBgijFeAi7VHUJ83B63nZ23KbnVAFKbZnVMR"
+			]
+		}
+	},
+	"version": 1
+}
